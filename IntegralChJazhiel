@@ -1,0 +1,47 @@
+import math 
+
+ 
+
+#defino algunas funciones de prueba 
+
+def f0(x): 
+
+    return 1 
+
+def f1(x): 
+
+    return math.sqrt(x) 
+
+def f2(x): 
+
+    return 4 / (1 + x**2) 
+
+ 
+
+#defino la funcion que se encarga de calcular la integral aproximadamente usando el método del trapecio 
+
+def int_aprox_trap(f,xMin,xMax,numDiv): 
+
+    deltaX=(xMax -xMin)/float(numDiv) 
+
+    inte=(f(xMin) + f(xMax))/2.0 
+
+    k=1 
+
+    while k < numDiv: 
+
+        inte += f(xMin + k*deltaX)  
+
+        k += 1 
+
+    return inte * deltaX 
+
+ 
+
+#algunas pruebas para testear 
+
+print (int_aprox_trap(f0,4,22.4,10)) #regresa 18.4, el valor exacto como corresponde 
+
+print (int_aprox_trap(f1,0,1,20)) #regresa 0.664446591427 (2/3) 
+
+print (int_aprox_trap(f2,0,1,25)) #regresa 3.14132598693  (pi) 
